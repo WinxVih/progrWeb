@@ -1,3 +1,33 @@
 from django.db import models
 
-# Create your models here.
+# Criação das classes para o modelo
+
+
+class Usuario(models.Model):
+    nome = models.CharField(max_length=100)
+    senha = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+
+
+class Camera(models.Model):
+    ip = models.PositiveSmallIntegerField(default=0)
+    status = models.CharField(max_length=100)
+
+
+class Sistema_Seguranca(models.Model):
+    nome = models.CharField(max_length=100)
+    localizacao = models.CharField(max_length=100)
+
+
+class Processador_IA(models.Model):
+    modelo = models.CharField(max_length=100)
+    confiabilidade = models.BooleanField(default=True)  
+
+
+class Dispositivo_Automacao(models.Model):
+    tipo = models.CharField(max_length=100)
+    estado = models.CharField(max_length=100)
+
+
+class Notificacao(models.Model):
+    tipo = models.CharField(max_length=100)
