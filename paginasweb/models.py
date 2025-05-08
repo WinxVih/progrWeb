@@ -7,16 +7,22 @@ class Usuario(models.Model):
     nome = models.CharField(max_length=100)
     senha = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
+    def __str__(self):
+        return f" {self.nome}"
+    
 
 
 class Camera(models.Model):
     ip = models.PositiveSmallIntegerField(default=0)
     status = models.CharField(max_length=100)
-
+    def __str__(self):
+        return f"IP: {self.ip} - Status: {self.status}"
 
 class Sistema_Seguranca(models.Model):
     nome = models.CharField(max_length=100)
     localizacao = models.CharField(max_length=100)
+def __str__(self):
+        return f"{self.nome} ({self.localizacao})"
 
 
 class Processador_IA(models.Model):
@@ -31,3 +37,5 @@ class Dispositivo_Automacao(models.Model):
 
 class Notificacao(models.Model):
     tipo = models.CharField(max_length=100)
+def __str__(self):
+        return f"Notificação: {self.tipo}"

@@ -1,0 +1,20 @@
+{% extends "paginasweb/index.html" %}
+
+{% load static %}
+
+{% block conteudo %}
+<h3>Sobre</h3>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+
+
+
+</form>
+
+{%  endblock  %}
+
+
+
