@@ -7,46 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    {%block titulo %} 
-    <title>Página Inicial</title>
-
-    {% endblock titulo %}
-
-
     <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
 
 </head>
 <body>
 
-    <h4> Menu Superior </h4>
-<ul>
-    <li>
-        <a href="{% url "index"  %}">Inicio </a>
+     <ul id="menu">
+        <li><a href="{% url "index" %}">Início</a></li>
+        <li><a href="{% url "sobre" %}">Sobre nós</a></li>
 
-    </li>
+        <li><a href="{% url "inserir-usuario" %}">usuario</a></li>
+        <li><a href="{% url "inserir-camera" %}">camera</a></li>
+        <li><a href="{% url "inserir-sistema-seguranca" %}">sistema de seguranca</a></li>
+        <li><a href="{% url "inserir-processador-ia" %}">processador da IA</a></li>
+        <li><a href="{% url "inserir-dispositivo-automacao" %}">dispositivo de automacao</a></li>
+        <li><a href="{% url "inserir-notificacao" %}">notificacao</a></li>
 
-    <li>
-        <a href="{% url "sobre" %}">Sobre tudo </a>
+    </ul>
+ <div id="conteudo">
+        {% block conteudo %}
 
-    </li>
-</ul>
-{%                                 block conteudo                                  %}
-
-
-
-
-    <h3>Página inicial</h3>
-
-
-
-
-    <p>Bem vindos a página inicial de Programação Web</p> 
-    {%                            endblock                              %}
+        <h3>Página inicial</h3>
+        
+        <p>Bem vindos a página inicial de Programação Web</p>
+        
+        {%  endblock  %}
+    </div>
 
 
-<p> Desenvolvido por Vitória e Baraldi </p>
-
-
+    <div id="rodape" >
+        Desenvolvido por Gustavo Baraldi e Vitória Paula
+    </div>
     
 </body>
 </html>

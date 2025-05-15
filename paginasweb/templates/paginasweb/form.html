@@ -3,12 +3,12 @@
 {% load static %}
 
 {% block conteudo %}
-<h3>Sobre</h3>
+<h3>{{form}}</h3>
 
-<form action="" method="POST">
+<form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Salvar</button>
+    <button type="submit" style="width: 90px; height: 30px;">{{Salvar}}</button>
 
 
 
