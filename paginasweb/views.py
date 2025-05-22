@@ -24,30 +24,50 @@ class CameraCreate(CreateView):
     template_name = 'paginasweb/form.html'
     fields = ['ip', 'status']  
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Cadastrar camera',
+        'botao' : 'Cadastrar',
+    }
 
 class SistemaSegurancaCreate(CreateView):
     model = Sistema_Seguranca
     template_name = 'paginasweb/form.html'
     fields = ['nome']  
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Cadastrar sistema de seguranca',
+        'botao' : 'Cadastrar',
+    }
 
 class ProcessadorIACreate(CreateView):
     model = Processador_IA
     template_name = 'paginasweb/form.html'
     fields = ['modelo', 'confiabilidade']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Cadastrar processador',
+        'botao' : 'Cadastrar',
+    }
 
 class DispositivoAutomacaoCreate(CreateView):
     model = Dispositivo_Automacao
     template_name = 'paginasweb/form.html'
     fields = ['tipo', 'estado']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Cadastrar dispositivo de automacao',
+        'botao' : 'Cadastrar',
+    }
 
 class NotificacaoCreate(CreateView):
     model = Notificacao
     template_name = 'paginasweb/form.html'
     fields = ['tipo']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Cadastrar notificacao',
+        'botao' : 'Cadastrar',
+    }
 
 ################################## UPDATE
 class UsuarioUpdate(UpdateView):
