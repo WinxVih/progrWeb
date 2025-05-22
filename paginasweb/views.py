@@ -65,69 +65,103 @@ class CameraUpdate(UpdateView):
     template_name = 'paginasweb/form.html'
     fields = ['ip', 'status']  
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Atualização de dados da Camera',
+        'botao' : 'Salvar',
+    }
 
 class ProcessadorIAUpdate(UpdateView):
     model = Processador_IA
     template_name = 'paginasweb/form.html'
     fields = ['modelo', 'confiabilidade']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Atualização de dados do Processador',
+        'botao' : 'Salvar',
+    }
 
 class DispositivoAutomacaoUpdate(UpdateView):
     model = Dispositivo_Automacao
     template_name = 'paginasweb/form.html'
     fields = ['tipo', 'estado']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Atualização de dados do Dispositivo de Automacao',
+        'botao' : 'Salvar',
+    }
 
 class SistemaSegurancaUpdate(UpdateView):
     model = Sistema_Seguranca
     template_name = 'paginasweb/form.html'
     fields = ['nome']  
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Atualização de dados do Sistema de Segurança',
+        'botao' : 'Salvar',
+    }
 
 class NotificacaoUpdate(UpdateView):
     model = Notificacao
     template_name = 'paginasweb/form.html'
     fields = ['tipo']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Atualização de dados da Notificação',
+        'botao' : 'Salvar',
+    }
 
 ######################################### DELETE
 
 class UsuarioDelete(DeleteView):
     model = Usuario
     template_name = 'paginasweb/form.html'
-    fields = ['nome']
     success_url = reverse_lazy('index')
     extra_context = {
-        'titulo' : 'Atualização de dados do Usuario',
-        'botao' : 'Salvar',
+        'titulo' : 'Deletar Usuario',
+        'botao' : 'Excluir',
     }
 
 class CameraDelete(DeleteView):
     model = Camera
     template_name = 'paginasweb/form.html'
-    fields = ['ip', 'status']  
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Deletar Camera',
+        'botao' : 'Excluir',
+    }
 
 class ProcessadorIADelete(DeleteView):
     model = Processador_IA
     template_name = 'paginasweb/form.html'
-    fields = ['modelo', 'confiabilidade']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Deletar Processador',
+        'botao' : 'Excluir',
+    }
 
 class DispositivoAutomacaoDelete(DeleteView):
     model = Dispositivo_Automacao
     template_name = 'paginasweb/form.html'
-    fields = ['tipo', 'estado']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Deletar Disoositivo de Automacao',
+        'botao' : 'Excluir',
+    }
 
 class NotificacaoDelete(DeleteView):
     model = Notificacao
     template_name = 'paginasweb/form.html'
-    fields = ['tipo']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Deletar Notificacao',
+        'botao' : 'Excluir',
+    }
 
 class SistemaSegurancaDelete(DeleteView):
     model = Sistema_Seguranca
     template_name = 'paginasweb/form.html'
-    fields = ['tipo', 'estado']
     success_url = reverse_lazy('index')
+    extra_context = {
+        'titulo' : 'Deletar Sistema de Seguranca',
+        'botao' : 'Excluir',
+    }

@@ -3,15 +3,21 @@
 {% load static %}
 
 {% block conteudo %}
-<h3>{{form}}</h3>
+
+<h3>{{titulo}}</h3>
 
 <form action="" method="post">
+    
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" style="width: 90px; height: 30px;">{{Salvar}}</button>
 
+    {% if botao == "Excluir" %}
+    <h5 style="color:white;">Deseja excluir o registro: {{ object }}</h5>
+    {% endif %}
 
-
+    <button type="submit" style="background-color: white; color: black;">
+        {{ botao }}
+    </button>
 </form>
 
 {%  endblock  %}
