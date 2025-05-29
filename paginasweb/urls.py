@@ -6,6 +6,8 @@ from .views import UsuarioCreate, CameraCreate, SistemaSegurancaCreate,  Process
 from .views import UsuarioUpdate, CameraUpdate, DispositivoAutomacaoUpdate, ProcessadorIAUpdate, SistemaSegurancaUpdate, NotificacaoUpdate
 ################## IMPORT DELETE
 from .views import UsuarioDelete, CameraDelete, SistemaSegurancaDelete, ProcessadorIADelete, DispositivoAutomacaoDelete, NotificacaoDelete
+from .views import UsuarioList
+
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),  # URL para a página inicial
     path('sobre/', SobreView.as_view(), name='sobre'),  # URL para a página "Sobre"

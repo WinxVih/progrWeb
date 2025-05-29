@@ -3,6 +3,10 @@ from django.views.generic.edit import CreateView,UpdateView, DeleteView
 from .models import Usuario,Camera,Sistema_Seguranca,Processador_IA,Dispositivo_Automacao,Notificacao
 from django.urls import reverse_lazy
 
+# Criação das listas
+
+
+
 class IndexView(TemplateView):
     template_name = 'paginasweb/index.html'  
 
@@ -185,3 +189,10 @@ class SistemaSegurancaDelete(DeleteView):
         'titulo' : 'Deletar Sistema de Seguranca',
         'botao' : 'Excluir',
     }
+
+class UsuarioList(ListView):
+    model = Usuario
+    template_name = 'paginasweb/usuario.html'
+    
+
+    

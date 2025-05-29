@@ -1,0 +1,36 @@
+{% extends "paginasweb/index.html" %}
+
+{% load static %}
+
+{% block conteudo %}
+<h3>Lista de Usuarios cadastrados</h3>
+
+<table>
+  <tr>
+  
+  <th>nome</th>
+  <th>email</th>
+  <th>opções</th>
+
+  </tr>
+
+  {% for obj in object_list %}
+  <tr> 
+    <td>{{ obj.nome}}</td>
+    <td>{{ ojb.cadastrado_em }}</td>
+    <td>
+      <a href="#">Editar</a>
+      <a href="#">Excluir</a>
+    </td>
+  </tr>
+  {% else %}
+  <tr>
+    <td colspan="3">Nenhum registro encontrado.</td>
+  </tr>
+  {% endfor %}
+
+</table>
+{%  endblock  %}
+
+
+

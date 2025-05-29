@@ -21,7 +21,7 @@ class Camera(models.Model):
 class Sistema_Seguranca(models.Model):
     nome = models.CharField(max_length=100)
     localizacao = models.CharField(max_length=100)
-def __str__(self):
+    def __str__(self):
         return f"{self.nome} ({self.localizacao})"
 
 
@@ -37,5 +37,5 @@ class Dispositivo_Automacao(models.Model):
 
 class Notificacao(models.Model):
     tipo = models.CharField(max_length=100)
-def __str__(self):
+    def __str__(self):
         return f"Notificação: {self.tipo}"
