@@ -6,7 +6,8 @@ from .views import UsuarioCreate, CameraCreate, SistemaSegurancaCreate,  Process
 from .views import UsuarioUpdate, CameraUpdate, DispositivoAutomacaoUpdate, ProcessadorIAUpdate, SistemaSegurancaUpdate, NotificacaoUpdate
 ################## IMPORT DELETE
 from .views import UsuarioDelete, CameraDelete, SistemaSegurancaDelete, ProcessadorIADelete, DispositivoAutomacaoDelete, NotificacaoDelete
-from .views import UsuarioList
+##################IMPORT LIS
+from .views import UsuarioList, CameraList, SistemaSegurancaList, ProcessadorList, DispositivoAutomacaoList, NotificacaoList
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),  # URL para a página inicial
@@ -31,4 +32,11 @@ urlpatterns = [
     path('deletar/processador-ia/<int:pk>/', SistemaSegurancaDelete.as_view(), name='Deletar-Processador-ia'),
     path('deletar/dispositivo-automacao/<int:pk>/', DispositivoAutomacaoDelete.as_view(), name='Deletar-Dispositivo-automacao'),
     path('deletar/notificacao/<int:pk>/', NotificacaoDelete.as_view(), name='Deletar-notificacao'),   
+    #########################
+    path('listar/usuario/', UsuarioList.as_view(), name='Listar-Usuario'),
+    path('listar/camera/', CameraList.as_view(), name='Listar-Camera'),
+    path('listar/camera/', ProcessadorList.as_view(), name='Listar-Processador'),
+    path('listar/camera/', SistemaSegurancaList.as_view(), name='Listar-SistemaSeguranca'),
+    path('listar/camera/', DispositivoAutomacaoList.as_view(), name='Listar-DispositioAutomacao'),
+    path('listar/camera/', NotificacaoList.as_view(), name='Listar-Notificacao'),
 ]

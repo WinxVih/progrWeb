@@ -1,5 +1,5 @@
 body{
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -10,17 +10,20 @@ h3{
 p{
     color: white;
 }
-
+table{
+    color: white;
+    border-color: white;
+}
 #menu{
     list-style: none;
     padding: 5px;
     margin: 0;
-    background-color: #ffffff;
+    background-color: #000000;
     text-align: center;
 }
 
 #menu{
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 
 #menu li{

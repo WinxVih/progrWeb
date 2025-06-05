@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView,UpdateView, DeleteView 
 from .models import Usuario,Camera,Sistema_Seguranca,Processador_IA,Dispositivo_Automacao,Notificacao
 from django.urls import reverse_lazy
@@ -16,7 +16,7 @@ class SobreView(TemplateView):
 class UsuarioCreate(CreateView):
     model = Usuario
     template_name = 'paginasweb/form.html'
-    fields = ['nome']
+    fields = ['nome', 'senha', 'email']
     success_url = reverse_lazy('index')
     extra_context = {
         'titulo' : 'Cadastrar Usuario',
@@ -77,7 +77,7 @@ class NotificacaoCreate(CreateView):
 class UsuarioUpdate(UpdateView):
     model = Usuario
     template_name = 'paginasweb/form.html'
-    fields = ['nome']
+    fields = ['nome', 'senha', 'email']
     success_url = reverse_lazy('index')
     extra_context = {
         'titulo' : 'Atualização de dados do Usuario',
@@ -190,9 +190,33 @@ class SistemaSegurancaDelete(DeleteView):
         'botao' : 'Excluir',
     }
 
+#####################################LISTAS
+
 class UsuarioList(ListView):
     model = Usuario
-    template_name = 'paginasweb/usuario.html'
+    template_name = 'paginasweb/list/usuarioList.html'
     
 
-    
+class CameraList(ListView):
+    model = Camera
+    template_name = 'paginasweb/list/usuarioList.html'
+
+
+class ProcessadorList(ListView):
+    model = Processador_IA
+    template_name = 'paginasweb/list/usuarioList.html'
+
+
+class DispositivoAutomacaoList(ListView):
+    model = Dispositivo_Automacao
+    template_name = 'paginasweb/list/usuarioList.html'
+
+
+class NotificacaoList(ListView):
+    model = Notificacao
+    template_name = 'paginasweb/list/usuarioList.html'
+
+
+class SistemaSegurancaList(ListView):
+    model = Sistema_Seguranca
+    template_name = 'paginasweb/list/usuarioList.html'
