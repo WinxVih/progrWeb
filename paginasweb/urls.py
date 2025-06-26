@@ -8,8 +8,36 @@ from .views import UsuarioUpdate, CameraUpdate, DispositivoAutomacaoUpdate, Proc
 from .views import UsuarioDelete, CameraDelete, SistemaSegurancaDelete, ProcessadorIADelete, DispositivoAutomacaoDelete, NotificacaoDelete
 ##################IMPORT LIS
 from .views import UsuarioList, CameraList, SistemaSegurancaList, ProcessadorList, DispositivoAutomacaoList, NotificacaoList
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    #Criar rota para página de login
+    path("login/", auth_views.LoginView.as_view(
+        template_name = 'paginasweb/form.html',
+        extra_context = {
+        'titulo' : 'Autenticar',
+        'botao' : 'Entrar',
+    }
+    ), name="login"),
+
+    #Criar uma rota de logout
+    path("sair/", auth_views.LogoutView.as_view(
+        template_name = 'paginasweb/form.html',
+        extra_context = {
+        'titulo' : 'Deslogar',
+        'botao' : 'Sair',
+    }
+    ), name="logout"),
+    
+    #Criar uma rota de senha
+    path("atualizar/", auth_views.PasswordChangeView.as_view(
+        template_name = 'paginasweb/form.html',
+        extra_context = {
+        'titulo' : 'Atualizar_Senha',
+        'botao' : 'Atualizar',
+    }
+    ), name="senha"),
+
     path('', IndexView.as_view(), name='index'),  # URL para a página inicial
     path('sobre/', SobreView.as_view(), name='sobre'),  # URL para a página "Sobre"
     path('adicionar/usuario/', UsuarioCreate.as_view(), name='inserir-usuario'),
@@ -35,8 +63,8 @@ urlpatterns = [
     #########################
     path('listar/usuario/', UsuarioList.as_view(), name='Listar-Usuario'),
     path('listar/camera/', CameraList.as_view(), name='Listar-Camera'),
-    path('listar/camera/', ProcessadorList.as_view(), name='Listar-Processador'),
-    path('listar/camera/', SistemaSegurancaList.as_view(), name='Listar-SistemaSeguranca'),
-    path('listar/camera/', DispositivoAutomacaoList.as_view(), name='Listar-DispositioAutomacao'),
-    path('listar/camera/', NotificacaoList.as_view(), name='Listar-Notificacao'),
+    path('listar/processador/', ProcessadorList.as_view(), name='Listar-Processador'),
+    path('listar/sistemaSeguranca/', SistemaSegurancaList.as_view(), name='Listar-SistemaSeguranca'),
+    path('listar/dispositivoAutomacao/', DispositivoAutomacaoList.as_view(), name='Listar-DispositioAutomacao'),
+    path('listar/notificacao/', NotificacaoList.as_view(), name='Listar-Notificacao'),
 ]

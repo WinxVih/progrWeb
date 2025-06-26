@@ -2,7 +2,7 @@ from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView,UpdateView, DeleteView 
 from .models import Usuario,Camera,Sistema_Seguranca,Processador_IA,Dispositivo_Automacao,Notificacao
 from django.urls import reverse_lazy
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Criação das listas
 
 
@@ -23,7 +23,7 @@ class UsuarioCreate(CreateView):
         'botao' : 'Cadastrar',
     }
 
-class CameraCreate(CreateView):
+class CameraCreate(LoginRequiredMixin, CreateView):
     model = Camera
     template_name = 'paginasweb/form.html'
     fields = ['ip', 'status']  
@@ -33,7 +33,8 @@ class CameraCreate(CreateView):
         'botao' : 'Cadastrar',
     }
 
-class SistemaSegurancaCreate(CreateView):
+
+class SistemaSegurancaCreate(LoginRequiredMixin, CreateView):
     model = Sistema_Seguranca
     template_name = 'paginasweb/form.html'
     fields = ['nome']  
@@ -43,7 +44,8 @@ class SistemaSegurancaCreate(CreateView):
         'botao' : 'Cadastrar',
     }
 
-class ProcessadorIACreate(CreateView):
+
+class ProcessadorIACreate(LoginRequiredMixin, CreateView):
     model = Processador_IA
     template_name = 'paginasweb/form.html'
     fields = ['modelo', 'confiabilidade']
@@ -53,7 +55,8 @@ class ProcessadorIACreate(CreateView):
         'botao' : 'Cadastrar',
     }
 
-class DispositivoAutomacaoCreate(CreateView):
+
+class DispositivoAutomacaoCreate(LoginRequiredMixin, CreateView):
     model = Dispositivo_Automacao
     template_name = 'paginasweb/form.html'
     fields = ['tipo', 'estado']
@@ -63,7 +66,8 @@ class DispositivoAutomacaoCreate(CreateView):
         'botao' : 'Cadastrar',
     }
 
-class NotificacaoCreate(CreateView):
+
+class NotificacaoCreate(LoginRequiredMixin, CreateView):
     model = Notificacao
     template_name = 'paginasweb/form.html'
     fields = ['tipo']
@@ -199,24 +203,24 @@ class UsuarioList(ListView):
 
 class CameraList(ListView):
     model = Camera
-    template_name = 'paginasweb/list/usuarioList.html'
+    template_name = 'paginasweb/list/cameraList.html'
 
 
 class ProcessadorList(ListView):
     model = Processador_IA
-    template_name = 'paginasweb/list/usuarioList.html'
+    template_name = 'paginasweb/list/processadorList.html'
 
 
 class DispositivoAutomacaoList(ListView):
     model = Dispositivo_Automacao
-    template_name = 'paginasweb/list/usuarioList.html'
+    template_name = 'paginasweb/list/dispositivoAutomacaoList.html'
 
 
 class NotificacaoList(ListView):
     model = Notificacao
-    template_name = 'paginasweb/list/usuarioList.html'
+    template_name = 'paginasweb/list/notificacaoList.html'
 
 
 class SistemaSegurancaList(ListView):
     model = Sistema_Seguranca
-    template_name = 'paginasweb/list/usuarioList.html'
+    template_name = 'paginasweb/list/sistemaSegurancaList.html'

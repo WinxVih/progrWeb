@@ -1,0 +1,29 @@
+{% extends "paginasweb/index.html" %}
+
+{% load static %}
+
+{% block conteudo %}
+<h3>Lista de Câmeras </h3>
+
+<table>
+
+  <tr>
+    <th>ip</th>
+    <th>status</th>
+  <tr>
+
+  {% for Camera in object_list %}
+  <tr>
+    <td>{{Camera.ip}}</td>
+    <td>{{Camera.status}}</td>
+    <td>
+      <a href="{% url "Atualizar-Camera" Camera.pk %}">Editar</a>
+      <a href="{% url "Deletar-Camera" Camera.pk %}">Excluir</a>
+    </td>
+  </tr>
+
+  {% endfor %}
+</table>
+
+
+{%  endblock  %}

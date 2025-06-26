@@ -1,0 +1,29 @@
+{% extends "paginasweb/index.html" %}
+
+{% load static %}
+
+{% block conteudo %}
+<h3>Lista de processadores </h3>
+
+<table>
+
+  <tr>
+    <th>modelo</th>
+    <th>confiabilidade</th>
+  <tr>
+
+  {% for Processador in object_list %}
+  <tr>
+    <td>{{Processador.modelo}}</td>
+    <td>{{Processador.confiabilidade}}</td>
+    <td>
+      <a href="{% url "Atualizar-Processador" Processador.pk %}">Editar</a>
+      <a href="{% url "Deletar-Processador" Processador.pk %}">Excluir</a>
+    </td>
+  </tr>
+
+  {% endfor %}
+</table>
+
+
+{%  endblock  %}

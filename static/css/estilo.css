@@ -1,55 +1,71 @@
-body{
-    background-color: rgb(0, 0, 0);
-    font-family: Arial, sans-serif;
+body {
+    background-color: #000000;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    /* <-- texto padrão branco */
     margin: 0;
     padding: 0;
 }
-h3{
+
+h1,
+h2,
+h3,
+p,
+span,
+td,
+th {
     color: white;
+    /* garante branco em todos esses elementos */
 }
-p{
-    color: white;
-}
-table{
+
+table {
     color: white;
     border-color: white;
+    background-color: #1a1a1a;
+    /* fundo escuro para tabela */
 }
-#menu{
+
+/* MENU */
+#menu {
     list-style: none;
-    padding: 5px;
     margin: 0;
-    background-color: #000000;
+    padding: 15px 0;
+    background-color: #000;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-#menu{
-    background-color: rgb(0, 0, 0);
-}
-
-#menu li{
-    display: inline;
-    margin-right: 10px;
-    color: black;
-}
-#menu li a{
-    text-decoration: none;
-    color: #1e90ff;
+#menu li {
     display: inline-block;
-    padding: 5px 10px;
-    background-color: black;
-}
-#menu li a:hover{
-    background-color: #f0f0f0;
+    margin: 0 10px;
 }
 
-#conteudo, #rodape{
-    padding: 10px;
-    margin: 10px;
+#menu li a {
+    text-decoration: none;
+    color: #000;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#menu li a:hover {
+    background-color: #1e90ff;
+    color: white;
+}
+
+/* Conteúdo */
+#conteudo,
+#rodape {
+    padding: 20px;
+    margin: 20px;
 }
 
 #rodape {
     text-align: center;
-    color: grey;
+    color: #cccccc;
+    font-size: 0.9em;
 }
-
-
