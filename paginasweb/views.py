@@ -2,6 +2,7 @@ from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView,UpdateView, DeleteView 
 from .models import Usuario,Camera,Sistema_Seguranca,Processador_IA,Dispositivo_Automacao,Notificacao
 from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Criação das listas
 
@@ -22,6 +23,11 @@ class UsuarioCreate(CreateView):
         'titulo' : 'Cadastrar Usuario',
         'botao' : 'Cadastrar',
     }
+class CriarUsuarioView(SuccessMessageMixin, CreateView):
+    model = Usuario
+    fields = ['nome', 'senha', 'email']
+    success_url = '/usuario/'
+    success_message = "Usuario criado com sucesso!"
 
 class CameraCreate(LoginRequiredMixin, CreateView):
     model = Camera

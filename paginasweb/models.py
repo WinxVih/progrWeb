@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Criação das classes para o modelo
 
 
@@ -39,3 +39,4 @@ class Notificacao(models.Model):
     tipo = models.CharField(max_length=100)
     def __str__(self):
         return f"Notificação: {self.tipo}"
+    
