@@ -1,33 +1,17 @@
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView,UpdateView, DeleteView 
-from .models import Usuario,Camera,Sistema_Seguranca,Processador_IA,Dispositivo_Automacao,Notificacao
+from .models import Camera,Sistema_Seguranca,Processador_IA,Dispositivo_Automacao,Notificacao
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Criação das listas
-
-
 
 class IndexView(TemplateView):
     template_name = 'paginasweb/index.html'  
 
 class SobreView(TemplateView):
     template_name = 'paginasweb/sobre.html'
-
-class UsuarioCreate(CreateView):
-    model = Usuario
-    template_name = 'paginasweb/form.html'
-    fields = ['nome', 'senha', 'email']
-    success_url = reverse_lazy('index')
-    extra_context = {
-        'titulo' : 'Cadastrar Usuario',
-        'botao' : 'Cadastrar',
-    }
-class CriarUsuarioView(SuccessMessageMixin, CreateView):
-    model = Usuario
-    fields = ['nome', 'senha', 'email']
-    success_url = '/usuario/'
-    success_message = "Usuario criado com sucesso!"
 
 class CameraCreate(LoginRequiredMixin, CreateView):
     model = Camera
@@ -84,15 +68,7 @@ class NotificacaoCreate(LoginRequiredMixin, CreateView):
     }
 
 ################################## UPDATE
-class UsuarioUpdate(UpdateView):
-    model = Usuario
-    template_name = 'paginasweb/form.html'
-    fields = ['nome', 'senha', 'email']
-    success_url = reverse_lazy('index')
-    extra_context = {
-        'titulo' : 'Atualização de dados do Usuario',
-        'botao' : 'Salvar',
-    }
+
 
 class CameraUpdate(UpdateView):
     model = Camera
@@ -146,14 +122,6 @@ class NotificacaoUpdate(UpdateView):
 
 ######################################### DELETE
 
-class UsuarioDelete(DeleteView):
-    model = Usuario
-    template_name = 'paginasweb/form.html'
-    success_url = reverse_lazy('index')
-    extra_context = {
-        'titulo' : 'Deletar Usuario',
-        'botao' : 'Excluir',
-    }
 
 class CameraDelete(DeleteView):
     model = Camera
@@ -202,10 +170,6 @@ class SistemaSegurancaDelete(DeleteView):
 
 #####################################LISTAS
 
-class UsuarioList(ListView):
-    model = Usuario
-    template_name = 'paginasweb/list/usuarioList.html'
-    
 
 class CameraList(ListView):
     model = Camera

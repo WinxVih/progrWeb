@@ -15,9 +15,8 @@
      <ul id="menu">
         <li><a href="{% url "index" %}">Início</a></li>
         <li><a href="{% url "sobre" %}">Sobre nós</a></li>
-        <li><a href="{% url "inserir-usuario" %}">usuario</a></li>
 
-         {% if  request.user.is_authenticated %}
+         {% if request.user.is_authenticated %}
         
         <li><a href="{% url "inserir-camera" %}">camera</a></li>
         <li><a href="{% url "inserir-sistema-seguranca" %}">sistema de seguranca</a></li>
