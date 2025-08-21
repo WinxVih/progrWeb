@@ -4,23 +4,22 @@
 
 {% block conteudo %}
 
-<h3>{{titulo}}</h3>
+<h3 style="text-align: center; color: #333;">{{ titulo }}</h3>
 
-<form action="" method="post">
+<form action="" method="post" style="max-width: 500px; margin: 20px auto; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
     
     {% csrf_token %}
-    {{ form.as_p }}
+    <div style="margin-bottom: 15px;">
+        {{ form.as_p }}
+    </div>
 
     {% if botao == "Excluir" %}
-    <h5 style="color:white;">Deseja excluir o registro: {{ object }}</h5>
+    <h5 style="color: #ff4d4d; text-align: center;">Deseja excluir o registro: {{ object }}</h5>
     {% endif %}
 
-    <button type="submit" style="background-color: white; color: black;">
+    <button type="submit" style="width: 100%; padding: 10px; background-color: #007BFF; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;">
         {{ botao }}
     </button>
 </form>
 
-{%  endblock  %}
-
-
-
+{% endblock %}
