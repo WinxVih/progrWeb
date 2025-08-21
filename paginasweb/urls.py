@@ -9,9 +9,12 @@ from .views import  CameraDelete, SistemaSegurancaDelete, ProcessadorIADelete, D
 ##################IMPORT LIS
 from .views import CameraList, SistemaSegurancaList, ProcessadorList, DispositivoAutomacaoList, NotificacaoList
 from django.contrib.auth import views as auth_views
+from .views import CadastroUsuarioView
+
 
 urlpatterns = [
     #Criar rota para página de login
+    path("registrar/", CadastroUsuarioView.as_view(), name="registrar"),
     path("login/", auth_views.LoginView.as_view(
         template_name = 'paginasweb/form.html',
         extra_context = {
