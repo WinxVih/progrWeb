@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 
 
+
 # Crie uma classe de formulário para o cadastro de usuários
 # A herança é feita para poder tornar o email único e obrigatório
 # E outros campos, se necessário

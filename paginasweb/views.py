@@ -6,6 +6,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User, Group
 from .forms import UsuarioCadastroForm
+from django.shortcuts import get_object_or_404
 
 
 # Crie a view no final do arquivo ou em outro local que faça sentido
@@ -48,6 +49,11 @@ class CameraCreate(LoginRequiredMixin, CreateView):
         'botao' : 'Cadastrar',
     }
 
+    # pega o usuário autenticado e atribui ao campo usuario
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
+
 
 class SistemaSegurancaCreate(LoginRequiredMixin, CreateView):
     model = Sistema_Seguranca
@@ -58,6 +64,9 @@ class SistemaSegurancaCreate(LoginRequiredMixin, CreateView):
         'titulo' : 'Cadastrar sistema de seguranca',
         'botao' : 'Cadastrar',
     }
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
 
 
 class ProcessadorIACreate(LoginRequiredMixin, CreateView):
@@ -69,6 +78,9 @@ class ProcessadorIACreate(LoginRequiredMixin, CreateView):
         'titulo' : 'Cadastrar processador',
         'botao' : 'Cadastrar',
     }
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
 
 
 class DispositivoAutomacaoCreate(LoginRequiredMixin, CreateView):
@@ -80,6 +92,9 @@ class DispositivoAutomacaoCreate(LoginRequiredMixin, CreateView):
         'titulo' : 'Cadastrar dispositivo de automacao',
         'botao' : 'Cadastrar',
     }
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
 
 
 class NotificacaoCreate(LoginRequiredMixin, CreateView):
@@ -91,6 +106,9 @@ class NotificacaoCreate(LoginRequiredMixin, CreateView):
         'titulo' : 'Cadastrar notificacao',
         'botao' : 'Cadastrar',
     }
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
 
 ################################## UPDATE
 
@@ -105,6 +123,10 @@ class CameraUpdate(UpdateView):
         'botao' : 'Salvar',
     }
 
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Camera, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
+
 class ProcessadorIAUpdate(UpdateView):
     model = Processador_IA
     template_name = 'paginasweb/form.html'
@@ -114,6 +136,10 @@ class ProcessadorIAUpdate(UpdateView):
         'titulo' : 'Atualização de dados do Processador',
         'botao' : 'Salvar',
     }
+
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Processador_IA, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
 
 class DispositivoAutomacaoUpdate(UpdateView):
     model = Dispositivo_Automacao
@@ -125,6 +151,10 @@ class DispositivoAutomacaoUpdate(UpdateView):
         'botao' : 'Salvar',
     }
 
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Dispositivo_Automacao, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
+
 class SistemaSegurancaUpdate(UpdateView):
     model = Sistema_Seguranca
     template_name = 'paginasweb/form.html'
@@ -135,6 +165,10 @@ class SistemaSegurancaUpdate(UpdateView):
         'botao' : 'Salvar',
     }
 
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Sistema_Seguranca, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
+
 class NotificacaoUpdate(UpdateView):
     model = Notificacao
     template_name = 'paginasweb/form.html'
@@ -144,6 +178,10 @@ class NotificacaoUpdate(UpdateView):
         'titulo' : 'Atualização de dados da Notificação',
         'botao' : 'Salvar',
     }
+
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Notificacao, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
 
 ######################################### DELETE
 
@@ -157,6 +195,11 @@ class CameraDelete(DeleteView):
         'botao' : 'Excluir',
     }
 
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Camera, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
+
+
 class ProcessadorIADelete(DeleteView):
     model = Processador_IA
     template_name = 'paginasweb/form.html'
@@ -165,6 +208,11 @@ class ProcessadorIADelete(DeleteView):
         'titulo' : 'Deletar Processador',
         'botao' : 'Excluir',
     }
+
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Processador_IA, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
+    
 
 class DispositivoAutomacaoDelete(DeleteView):
     model = Dispositivo_Automacao
@@ -175,6 +223,11 @@ class DispositivoAutomacaoDelete(DeleteView):
         'botao' : 'Excluir',
     }
 
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Dispositivo_Automacao, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
+    
+
 class NotificacaoDelete(DeleteView):
     model = Notificacao
     template_name = 'paginasweb/form.html'
@@ -183,6 +236,10 @@ class NotificacaoDelete(DeleteView):
         'titulo' : 'Deletar Notificacao',
         'botao' : 'Excluir',
     }
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Notificacao, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
+
 
 class SistemaSegurancaDelete(DeleteView):
     model = Sistema_Seguranca
@@ -192,6 +249,10 @@ class SistemaSegurancaDelete(DeleteView):
         'titulo' : 'Deletar Sistema de Seguranca',
         'botao' : 'Excluir',
     }
+    def get_object(self, queryset=None):
+        obj = get_object_or_404(Sistema_Seguranca, pk=self.kwargs.get('pk'), usuario=self.request.user)
+        return obj
+
 
 #####################################LISTAS
 
@@ -219,3 +280,50 @@ class NotificacaoList(ListView):
 class SistemaSegurancaList(ListView):
     model = Sistema_Seguranca
     template_name = 'paginasweb/list/sistemaSegurancaList.html'
+
+
+# Views que listam só os registros do usuário logado
+
+class UsuarioCameraList(ListView):
+    model = Camera
+    template_name = 'paginasweb/list/cameraList.html'
+
+    def get_queryset(self):
+        # Filtra as câmeras pelo usuário logado
+        return Camera.objects.filter(usuario=self.request.user)
+
+
+class UsuarioProcessadorList(ListView):
+    model = Processador_IA
+    template_name = 'paginasweb/list/processadorList.html'
+
+    def get_queryset(self):
+        # Filtra os processadores pelo usuário logado
+        return Processador_IA.objects.filter(usuario=self.request.user)
+
+
+class UsuarioDispositivoAutomacaoList(ListView):
+    model = Dispositivo_Automacao
+    template_name = 'paginasweb/list/dispositivoAutomacaoList.html'
+
+    def get_queryset(self):
+        # Filtra os dispositivos pelo usuário logado
+        return Dispositivo_Automacao.objects.filter(usuario=self.request.user)
+
+
+class UsuarioNotificacaoList(ListView):
+    model = Notificacao
+    template_name = 'paginasweb/list/notificacaoList.html'
+
+    def get_queryset(self):
+        # Filtra as notificações pelo usuário logado
+        return Notificacao.objects.filter(usuario=self.request.user)
+
+
+class UsuarioSistemaSegurancaList(ListView):
+    model = Sistema_Seguranca
+    template_name = 'paginasweb/list/sistemaSegurancaList.html'
+
+    def get_queryset(self):
+        # Filtra os sistemas de segurança pelo usuário logado
+        return Sistema_Seguranca.objects.filter(usuario=self.request.user)

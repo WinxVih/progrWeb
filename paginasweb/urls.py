@@ -10,6 +10,8 @@ from .views import  CameraDelete, SistemaSegurancaDelete, ProcessadorIADelete, D
 from .views import CameraList, SistemaSegurancaList, ProcessadorList, DispositivoAutomacaoList, NotificacaoList
 from django.contrib.auth import views as auth_views
 from .views import CadastroUsuarioView
+################## Views de listas do usuário
+from .views import UsuarioCameraList, UsuarioProcessadorList, UsuarioDispositivoAutomacaoList, UsuarioNotificacaoList, UsuarioSistemaSegurancaList
 
 
 urlpatterns = [
@@ -66,4 +68,13 @@ urlpatterns = [
     path('listar/sistemaSeguranca/', SistemaSegurancaList.as_view(), name='Listar-SistemaSeguranca'),
     path('listar/dispositivoAutomacao/', DispositivoAutomacaoList.as_view(), name='Listar-DispositioAutomacao'),
     path('listar/notificacao/', NotificacaoList.as_view(), name='Listar-Notificacao'),
+
+    # Listas do usuário
+    path('meus/cameras/', UsuarioCameraList.as_view(), name='Usuario-Cameras'),
+    path('meus/processadores/', UsuarioProcessadorList.as_view(), name='Usuario-Processadores'),
+    path('meus/dispositivos-automacao/', UsuarioDispositivoAutomacaoList.as_view(), name='Usuario-Dispositivos-Automacao'),
+    path('meus/notificacoes/', UsuarioNotificacaoList.as_view(), name='Usuario-Notificacoes'),
+    path('meus/sistemas-seguranca/', UsuarioSistemaSegurancaList.as_view(), name='Usuario-Sistemas-Seguranca'),
+
+    
 ]
